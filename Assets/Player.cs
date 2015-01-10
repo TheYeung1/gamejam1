@@ -3,13 +3,12 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public bool active;
 
 	CharacterController controller;
 	// Use this for initialization
 	void Start () {
 		this.controller = this.GetComponent<CharacterController>();
-		this.active = true;
+
 	}
 	
 	// Update is called once per frame
@@ -23,9 +22,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider){
-		if (collider.gameObject.tag == "Bus" && active){
-			//Debug.Log("Collision Detected");
+		if (collider.gameObject.tag == "Bus"){
 			Debug.LogError("Collision Detected");
+			this.gameObject.SetActive(false);
 		}
 	}
 }
